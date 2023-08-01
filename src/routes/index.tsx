@@ -17,8 +17,8 @@ export const Ways = () => {
           <LayoutAuth>
             <Routes>
               <Route index element={<PageLogin />} />
-              <Route path="/recovery" element={<PageRecover />} />
-              <Route path="/redefine" element={<PageRedefine />} />
+              <Route path="recovery" element={<PageRecover />} />
+              <Route path="redefine" element={<PageRedefine />} />
             </Routes>
           </LayoutAuth>
         }

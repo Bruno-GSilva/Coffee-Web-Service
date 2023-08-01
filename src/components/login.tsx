@@ -53,12 +53,11 @@ export const Login = () => {
             <Button label="Sign in" />
             <p className="text-sm font-light text-gray-500 dark:text-gray-400">
               Don’t have an account yet?{" "}
-              <a
-                href="#"
+              <span
                 className="font-medium text-primary-600 hover:underline dark:text-primary-500"
                 onClick={() => setChangeForm(false)}>
                 Sign up
-              </a>
+              </span>
             </p>
           </form>
         </div>
