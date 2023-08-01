@@ -54,7 +54,7 @@ export const Login = () => {
             <p className="text-sm font-light text-gray-500 dark:text-gray-400">
               Don’t have an account yet?{" "}
               <span
-                className="font-medium text-primary-600 hover:underline dark:text-primary-500"
+                className="font-medium text-primary-600 hover:underline dark:text-primary-500 cursor-pointer"
                 onClick={() => setChangeForm(false)}>
                 Sign up
               </span>

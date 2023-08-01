@@ -54,7 +54,7 @@ export const Input = (props: InputProps) => {
             </label>
           </div>
         </div>
-        <p className="text-sm mx-1 font-medium text-red-600 hover:underline dark:text-primary-500 cursor-pointer">
+        <p className="text-sm mx-1 font-medium text-primary-600 hover:underline dark:text-primary-500 cursor-pointer">
           <Link to={`${navigate}`}>{labelTextCheckbox}</Link>
         </p>
       </div>

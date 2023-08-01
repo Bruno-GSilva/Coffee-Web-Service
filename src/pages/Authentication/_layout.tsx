@@ -1,20 +1,15 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 
 import background from "../../assets/bg-coffee.jpg";
 import { GlobalChangeContext } from "../../context/changeFormContext";
+import { Outlet } from "react-router-dom";
 
-interface LayoutAuthProps {
-  children: React.ReactNode;
-}
-
-export const LayoutAuth: React.FC<LayoutAuthProps> = ({
-  children,
-}: LayoutAuthProps) => {
+export const LayoutAuth = () => {
   const { changeForm } = useContext(GlobalChangeContext);
   return (
     <main className="w-full h-screen flex">
       <div className="relative w-full h-full flex">
-        <div className="flex absolute w-full h-screen">{children}</div>
+        <div className="flex absolute w-full h-screen">{<Outlet />}</div>
         <div
           className={`z-50 absolute hidden md:flex md:justify-center md:items-center w-1/2 h-full ${
             changeForm ? "right-0" : "left-0"
