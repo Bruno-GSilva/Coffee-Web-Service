@@ -20,17 +20,17 @@ export const PageLogin = () => {
                     </section>
                 </div>
                 <div
-                    className={`z-50 absolute w-1/2 h-full ${
+                    className={`z-50 absolute hidden md:block  w-1/2 h-full ${
                         changeForm ? "right-0" : "left-0"
                     } flex justify-center items-center`}
                 >
-                    <h1 className="md:text-2xl xl:4xl hidden md:block absolute mb-20 font-bold text-white p-4 bg-black bg-opacity-40 rounded-2xl">
+                    <h1 className="md:text-2xl xl:4xl absolute mb-20 font-bold text-white p-4 bg-black bg-opacity-40 rounded-2xl">
                         Seja Bem Vindo! A CWS
                     </h1>
                     <img
                         src={background}
                         alt="bg"
-                        className={`w-full h-full hidden md:block`}
+                        className={`w-full h-full`}
                     />
                 </div>
             </div>
