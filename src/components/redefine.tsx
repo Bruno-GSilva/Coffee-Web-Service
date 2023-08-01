@@ -1,14 +1,11 @@
 import { motion } from "framer-motion";
-import { useContext } from "react";
-import { GlobalChangeContext } from "../context/changeFormContext";
 
 import Aws_logo from "../assets/coffee-logo.png";
 
 import { Input } from "./UI/input";
 import { Button } from "./UI/Button";
 
-export const Login = () => {
-  const { setChangeForm } = useContext(GlobalChangeContext);
+export const Redefine: React.FC = () => {
   return (
     <motion.div
       initial={{ x: -1000 }}
@@ -24,13 +21,13 @@ export const Login = () => {
       <div className="w-full bg-white rounded-lg shadow-2xl dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
         <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
           <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-            Sign in to your account
+            Redefinir senha
           </h1>
           <form className="space-y-4 md:space-y-6" action="#">
             <div>
               <Input
                 mode="InputText"
-                labelText="Your email"
+                labelText="Nova senha"
                 inputPlaceHolder="name@company.com"
                 inputType="email"
               />
@@ -38,28 +35,12 @@ export const Login = () => {
             <div>
               <Input
                 mode="InputText"
-                labelText="Password"
-                inputPlaceHolder="********"
-                inputType="password"
+                labelText="confirmar senha"
+                inputPlaceHolder="name@company.com"
+                inputType="email"
               />
             </div>
-            <Input
-              navigate="recovery"
-              mode="Checkbox"
-              labelTextCheckbox="Forgot password?"
-              inputType="checkbox"
-              labelText="Remember password"
-            />
-            <Button label="Sign in" />
-            <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-              Don’t have an account yet?{" "}
-              <a
-                href="#"
-                className="font-medium text-primary-600 hover:underline dark:text-primary-500"
-                onClick={() => setChangeForm(false)}>
-                Sign up
-              </a>
-            </p>
+            <Button label="Entrar" />
           </form>
         </div>
       </div>
