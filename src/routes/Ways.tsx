@@ -28,9 +28,10 @@ const AuthRoutes = [
   },
 ];
 
-const RoutesBase = [
+const ProtectRoutes = [
   {
-    path: "home",
+    index:true,
+    path:"/home",
     element: <PageHome />,
   },
 ];
@@ -39,7 +40,7 @@ export const Ways = createBrowserRouter([
   {
     path: "/",
     element: <WaysProtect />,
-    children: RoutesBase,
+    children: ProtectRoutes,
     errorElement: <PageNotFound />,
   },
   {

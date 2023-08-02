@@ -7,7 +7,7 @@ import { RouterProvider } from "react-router-dom";
 function App() {
   return (
     <ChangeFormContext>
-      <RouterProvider router={Ways} />
+      <RouterProvider router={Ways} fallbackElement={<p>Loading...</p>} />
     </ChangeFormContext>
   );
 }
