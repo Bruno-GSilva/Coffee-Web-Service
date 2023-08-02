@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 
 // authentication
-import WaysProtect from "./ProtectWays";
+import WaysProtect from "./WaysProtect";
 // layouts
 import { LayoutAuth } from "../pages/Authentication/_layout";
 
@@ -12,35 +12,39 @@ import { PageRedefine } from "../pages/Authentication/pageRedefine";
 import { PageHome } from "../pages/Home";
 import { PageNotFound } from "../pages/pageNotFound";
 
+const AuthRoutes = [
+  {
+    index: true,
+    path: "/login",
+    element: <PageLogin />,
+  },
+  {
+    path: "login/recovery",
+    element: <PageRecover />,
+  },
+  {
+    path: "login/redefine",
+    element: <PageRedefine />,
+  },
+];
+
+const RoutesBase = [
+  {
+    path: "home",
+    element: <PageHome />,
+  },
+];
+
 export const Ways = createBrowserRouter([
   {
     path: "/",
     element: <WaysProtect />,
-    children: [
-      {
-        path: "home",
-        element: <PageHome />,
-      },
-    ],
+    children: RoutesBase,
     errorElement: <PageNotFound />,
   },
   {
-    path: "/login/*",
+    path: "/",
     element: <LayoutAuth />,
-    children: [
-      {
-        index:true,
-        element: <PageLogin />,
-      },
-      {
-        path: "recovery",
-        element: <PageRecover />,
-      },
-      {
-        path: "redefine",
-        element: <PageRedefine />,
-      },
-      
-    ],
+    children: AuthRoutes,
   },
 ]);
