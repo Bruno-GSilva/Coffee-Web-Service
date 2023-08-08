@@ -1,14 +1,15 @@
 import "flowbite";
-import ChangeFormContext from "./context/changeFormContext";
 
 import { Ways } from "./routes/Ways";
 import { RouterProvider } from "react-router-dom";
 
+import AuthenticationContext from "./context/AuthenticationContex";
+
 function App() {
   return (
-    <ChangeFormContext>
+    <AuthenticationContext>
       <RouterProvider router={Ways} fallbackElement={<p>Loading...</p>} />
-    </ChangeFormContext>
+    </AuthenticationContext>
   );
 }
 

@@ -1,4 +1,4 @@
-export const PageNotFound: React.FC = () => {
+const PageNotFound: React.FC = () => {
   return (
     <div
       className={`w-full h-screen flex justify-center items-center bg-slate-800`}>
@@ -9,3 +9,5 @@ export const PageNotFound: React.FC = () => {
     </div>
   );
 };
+
+export default PageNotFound

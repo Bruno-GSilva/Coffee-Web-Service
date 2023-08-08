@@ -2,7 +2,7 @@ import React from "react";
 
 interface PageHomeProps {}
 
-export const PageHome: React.FC = ({}: PageHomeProps) => {
+const PageHome: React.FC = ({}: PageHomeProps) => {
   return (
     <div
       className={`w-full h-screen flex justify-center items-center bg-slate-800`}
@@ -11,3 +11,5 @@ export const PageHome: React.FC = ({}: PageHomeProps) => {
     </div>
   );
 };
+
+export default PageHome

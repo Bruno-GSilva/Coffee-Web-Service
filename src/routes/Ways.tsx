@@ -6,11 +6,11 @@ import WaysProtect from "./WaysProtect";
 import { LayoutAuth } from "../pages/Authentication/_layout";
 
 // screens
-import { PageLogin } from "../pages/Authentication/pageLogin";
-import { PageRecover } from "../pages/Authentication/pageRecover";
-import { PageRedefine } from "../pages/Authentication/pageRedefine";
-import { PageHome } from "../pages/Home";
-import { PageNotFound } from "../pages/pageNotFound";
+import  PageLogin  from "../pages/Authentication/pageLogin";
+import  PageRecover  from "../pages/Authentication/pageRecover";
+import  PageRedefine  from "../pages/Authentication/pageRedefine";
+import  PageHome  from "../pages/Home";
+import  PageNotFound  from "../pages/pageNotFound";
 
 const AuthRoutes = [
   {

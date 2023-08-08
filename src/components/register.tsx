@@ -1,6 +1,4 @@
 import { motion } from "framer-motion";
-import { useContext } from "react";
-import { GlobalChangeContext } from "../context/changeFormContext";
 
 import Aws_logo from "../assets/coffee-logo.png";
 
@@ -8,13 +6,13 @@ import { Input } from "./UI/input";
 import { Button } from "./UI/Button";
 
 export const Register = () => {
-  const { setChangeForm } = useContext(GlobalChangeContext);
   return (
     <motion.div
       initial={{ y: 1000 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+      className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0"
+    >
       <div className="flex  flex-col items-center md:flex-row md:justify-center">
         <img src={Aws_logo} className="w-16 h-16 m-4 object-cover" />
         <p className="flex items-center text-xl font-semibold text-gray-900 dark:text-white">
@@ -61,9 +59,7 @@ export const Register = () => {
             <Button label="Create an account" />
             <p className="text-sm font-light text-gray-500 dark:text-gray-400">
               Already have an account?{" "}
-              <span
-                className="font-medium text-primary-600 hover:underline dark:text-primary-500 cursor-pointer"
-                onClick={() => setChangeForm(true)}>
+              <span className="font-medium text-primary-600 hover:underline dark:text-primary-500 cursor-pointer">
                 Login here
               </span>
             </p>
