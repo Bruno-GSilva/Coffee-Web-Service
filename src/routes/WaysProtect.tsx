@@ -1,18 +1,10 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { useReadLocalStorage } from "usehooks-ts";
+// import { useReadLocalStorage } from "usehooks-ts";
 
 const WaysProtect = () => {
-  let token: boolean | null = useReadLocalStorage("token");
-
-  if (token) {
-    return (
-      <>
-        <Outlet />
-        <Navigate to={"/home"} />
-      </>
-    );
-  } else return <Navigate to={"/login"} />;
-  // return auth.token ? <Outlet /> : <Navigate to={"/login"} />;
+  // const token: boolean | null = useReadLocalStorage("token");
+  const auth = {token: true}
+  return auth.token ? <Outlet /> : <Navigate to={"/login"} />;
 };
 
 export default WaysProtect;

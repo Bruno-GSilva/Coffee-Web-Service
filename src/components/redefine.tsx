@@ -1,49 +1,53 @@
 import { motion } from "framer-motion";
+import { Label, TextInput } from "flowbite-react";
+// import { supabase } from "../lib/supabase";
 
-import Aws_logo from "../assets/coffee-logo.png";
-
-import { Input } from "./UI/input";
+import logo_cws from "../assets/coffee-logo.png";
 import { Button } from "./UI/Button";
 
-export const Redefine: React.FC = () => {
-  return (
-    <motion.div
-      initial={{ x: -1000 }}
-      animate={{ x: 0 }}
-      transition={{ duration: 0.5 }}
-      className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 ">
-      <div className="flex  flex-col items-center md:flex-row md:justify-center">
-        <img src={Aws_logo} className="w-16 h-16 m-4 object-cover" />
-        <p className="flex items-center text-xl font-semibold text-gray-900 dark:text-white">
-          Coffee and Web Services, Inc.
-        </p>
-      </div>
-      <div className="w-full bg-white rounded-lg shadow-2xl dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-        <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-          <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-            Redefinir senha
-          </h1>
-          <form className="space-y-4 md:space-y-6" action="#">
-            <div>
-              <Input
-                mode="InputText"
-                labelText="Nova senha"
-                inputPlaceHolder="name@company.com"
-                inputType="email"
-              />
-            </div>
-            <div>
-              <Input
-                mode="InputText"
-                labelText="confirmar senha"
-                inputPlaceHolder="name@company.com"
-                inputType="email"
-              />
-            </div>
-            <Button label="Entrar" />
-          </form>
-        </div>
-      </div>
-    </motion.div>
-  );
+export const Redefine = () => {
+    return (
+        <motion.div
+            initial={{ x: -1000 }}
+            animate={{ x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="w-full h-full  flex flex-col items-center justify-center lg:px-32 md:py-8 md:h-screen lg:py-0 "
+        >
+            <form className="w-full flex flex-col gap-4 md:border-2 border-black p-4 md:shadow-sm shadow-black">
+                <div className="w-full flex flex-col items-center border-2 ">
+                    <img src={logo_cws} className="w-32 h-32" />
+                    <h1 className="text-xl font-semibold">
+                        Coffee and Web Services, Inc.
+                    </h1>
+                </div>
+                <h1 className="text-2xl font-semibold">Nova senha</h1>
+
+                <div>
+                    <div className="mb-2 block">
+                        <Label htmlFor="password" value="Sua nova senha" />
+                    </div>
+                    <TextInput
+                        id="password"
+                        color={"success"}
+                        placeholder="********"
+                        required
+                        type="password"
+                    />
+                </div>
+                <div>
+                    <div className="mb-2 block">
+                        <Label htmlFor="password" value="Digite sua senha novamente" />
+                    </div>
+                    <TextInput
+                        id="password"
+                        color={"success"}
+                        placeholder="********"
+                        required
+                        type="password"
+                    />
+                </div>
+                <Button label="Salvar" />
+            </form>
+        </motion.div>
+    );
 };

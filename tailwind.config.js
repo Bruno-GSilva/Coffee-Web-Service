@@ -4,8 +4,10 @@ export default {
     "./index.html",
     "./node_modules/flowbite/**/*.js",
     "./src/**/*.{js,ts,jsx,tsx}",
+    'node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}',
     "./src/components/Input/index.tsx"
   ],
+  plugins: ['flowbite/plugin'],
   darkMode: 'class',
   theme: {
     extend: {
