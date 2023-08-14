@@ -1,8 +1,5 @@
-interface AsideBarProps {
-    openAside: boolean;
-}
 
-export const AsideBar = ({ openAside }: AsideBarProps) => {
+export const AsideBar = () => {
     return (
         <aside
             className={`w-1/4 bg-slate-600 h-full absolute left-0`}

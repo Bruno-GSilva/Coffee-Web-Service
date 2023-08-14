@@ -65,6 +65,7 @@ const PageProdutos = () => {
 
     const imageBodyTemplate = (item: ProductsProps) => {
         return <img src={item.image} alt={item.image} className="w-32 shadow-2 border-round" />;
+        setProducts
     };
     const ratingBodyTemplate = (item: ProductsProps) => {
         return <Rating value={item.rating} readOnly cancel={false} />;
