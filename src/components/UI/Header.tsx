@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Logo_CWS from "../../assets/coffee-logo.png";
-import { AsideBar } from "./Sidebar";
+// import { AsideBar } from "./Sidebar";
 
 export const Header = () => {
     const [openAside, setOpenAside] = useState<boolean>(false);
@@ -30,7 +30,7 @@ export const Header = () => {
                     />
                 </span>
             </header>
-            <AsideBar openAside={openAside} />
+            {/* <AsideBar openAside={openAside} /> */}
         </>
     );
 };
