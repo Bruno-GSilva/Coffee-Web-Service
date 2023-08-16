@@ -1,14 +1,15 @@
 type AuthenticationContextType = {
   user: Auth;
   setUser: React.Dispatch<React.SetStateAction<Auth>>;
+  token:boolean;
+  setToken: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 interface Auth {
-  id: number;
-  username: string;
-  email: string;
-  password: string;
-  token: boolean;
+  id?: number;
+  username?: string;
+  email?: string;
+  password?: string;
 }
 
 interface AuthenticationContextProps {

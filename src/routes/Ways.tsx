@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 
 // authentication
 import WaysProtect from "./WaysProtect";
+
 // layouts
 import LayoutAuth from "../pages/Authentication/_layout";
 import LayoutPage from "../pages/Home/_layout";
@@ -17,7 +18,7 @@ import PageProdutos from "../pages/Home/Produtos";
 const AuthRoutes = [
     {
         index: true,
-        path: "/login",
+        path: "login",
         element: <PageLogin />,
     },
     {

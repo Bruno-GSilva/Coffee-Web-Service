@@ -3,26 +3,30 @@ import { Checkbox, Label, TextInput } from "flowbite-react";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-// import { supabase } from "../lib/supabase";
 
 import logo_cws from "../assets/coffee-logo.png";
 import { Button } from "./UI/Button";
-import { Link } from "react-router-dom";
-
-const createUserFormSchema = z.object({
-    email: z
-        .string()
-        .nonempty("o e-mail é obrigatorio")
-        .email("formato do email invalido"),
-    password: z
-        .string()
-        .nonempty("a senha é obrigatoria")
-        .min(8, "a senha precisa de no minimo 8 caracteres"),
-});
-
-export type createUserFormData = z.infer<typeof createUserFormSchema>;
+import { Link, Navigate } from "react-router-dom";
+import { useContext } from "react";
+import { GlobalAuthContext } from "../context/AuthenticationContex";
 
 export const Login = () => {
+    const { setToken, token ,  setUser } = useContext(GlobalAuthContext);
+
+    const createUserFormSchema = z.object({
+        username: z.string().nonempty("seu username é obrigatorio"),
+        email: z
+            .string()
+            .nonempty("o e-mail é obrigatorio")
+            .email("formato do email invalido"),
+        password: z
+            .string()
+            .nonempty("a senha é obrigatoria")
+            .min(8, "a senha precisa de no minimo 8 caracteres"),
+    });
+
+    type createUserFormData = z.infer<typeof createUserFormSchema>;
+
     const {
         register,
         handleSubmit,
@@ -32,10 +36,8 @@ export const Login = () => {
     });
 
     async function createUser(user: createUserFormData) {
-        // const { error } = await supabase.storage
-        //     .from("auth-form-cws")
-        //     .upload(user.email, user.email);
-        // console.error(error);
+        setUser(user)
+        setToken(true);
         console.log(user);
     }
 
@@ -52,16 +54,35 @@ export const Login = () => {
             >
                 <div className="w-full flex flex-col items-center border-2 ">
                     <img src={logo_cws} className="w-32 h-32" />
-                    <h1 className="text-xl font-semibold">Coffee and Web Services, Inc.</h1>
+                    <h1 className="text-xl font-semibold">
+                        Coffee and Web Services, Inc.
+                    </h1>
                 </div>
                 <h1 className="text-2xl font-semibold">Login</h1>
-
                 <div>
                     <div className="mb-2 block">
-                        <Label htmlFor="email1" value="Seu email" />
+                        <Label htmlFor="name" value="Username" />
                     </div>
                     <TextInput
-                        id="email1"
+                        id="name"
+                        color={errors.email ? "failure" : "success"}
+                        placeholder="seu username"
+                        required
+                        type="text"
+                        helperText={
+                            <span className="font-medium">
+                                {errors.email?.message}
+                            </span>
+                        }
+                        {...register("username")}
+                    />
+                </div>
+                <div>
+                    <div className="mb-2 block">
+                        <Label htmlFor="email" value="Email" />
+                    </div>
+                    <TextInput
+                        id="email"
                         color={errors.email ? "failure" : "success"}
                         placeholder="name@gmail.com"
                         required
@@ -76,11 +97,11 @@ export const Login = () => {
                 </div>
                 <div>
                     <div className="mb-2 block">
-                        <Label htmlFor="password" value="Sua senha" />
+                        <Label htmlFor="password" value="Senha" />
                     </div>
                     <TextInput
                         id="password"
-                        color={errors.email ? "failure" : "success"}
+                        color={errors.password ? "failure" : "success"}
                         placeholder="********"
                         required
                         type="password"
@@ -89,7 +110,7 @@ export const Login = () => {
                                 {errors.password?.message}
                             </span>
                         }
-                        {...register("email")}
+                        {...register("password")}
                     />
                 </div>
                 <div className="flex items-center justify-between">
@@ -97,12 +118,17 @@ export const Login = () => {
                         <Checkbox id="remember" />
                         <Label htmlFor="remember">Lembrar senha</Label>
                     </div>
-                    <Link to={'/login/recovery'}>
-                        <a href="/login/recovery" className="text-sky-800 text-sm font-semibold underline">Esqueci minha senha</a>
+
+                    <Link to={"/login/recovery"}>
+                        <p className="text-sky-800 text-sm font-semibold underline">
+                            Esqueci minha senha
+                        </p>
                     </Link>
                 </div>
                 <Button label="Entrar" />
             </form>
+
+            {token && <Navigate to="/" replace={true} />}
         </motion.div>
     );
 };
