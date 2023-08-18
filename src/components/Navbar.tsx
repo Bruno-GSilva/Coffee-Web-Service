@@ -1,11 +1,12 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Logo from "../assets/coffee-logo.png";
-import { AlignJustify, LayoutDashboard, LogOut, Package } from "lucide-react";
+import { AlignJustify } from "lucide-react";
 import { GlobalAuthContext } from "../context/AuthenticationContex";
-import { AsideItem } from "./UI/AsideItem";
+import { AsideBar } from "./AsideBar";
 
 export const Navbar = () => {
-  const { user, setToken } = useContext(GlobalAuthContext);
+  const { user } = useContext(GlobalAuthContext);
+  const [openAside, setOpenAside] = useState<boolean>(false);
 
   return (
     <>
@@ -14,6 +15,7 @@ export const Navbar = () => {
           <div className="flex items-center justify-between">
             <div className="flex items-center justify-start">
               <button
+                onClick={() => setOpenAside(!openAside)}
                 data-drawer-target="logo-sidebar"
                 data-drawer-toggle="logo-sidebar"
                 aria-controls="logo-sidebar"
@@ -44,20 +46,7 @@ export const Navbar = () => {
           </div>
         </div>
       </nav>
-
-      <aside
-            id="logo-sidebar"
-            className="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
-            aria-label="Sidebar"
-        >
-            <div className="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
-                <ul className="space-y-2 font-medium">
-                    <AsideItem  icon={LayoutDashboard} route={"/"} label="Dashboard" />
-                    <AsideItem   icon={Package} route={"/produtos"} label="Produtos" />
-                    <AsideItem   icon={LogOut} route={"/"} label="Logout" onClick={(()=> setToken(false))}/>
-                </ul>
-            </div>
-        </aside>
+      <AsideBar open={openAside} />
     </>
   );
 };
