@@ -1,8 +1,9 @@
-import { useState } from "react";
+import {     useState } from "react";
+
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
-import { Rating } from 'primereact/rating';
-import { Tag } from 'primereact/tag';
+import { Rating } from "primereact/rating";
+import { Tag } from "primereact/tag";
 
 type ProductsProps = {
     name: string;
@@ -10,8 +11,8 @@ type ProductsProps = {
     price: string;
     category: string;
     status: boolean;
-    rating?:number;
-    inventoryStatus:"STOCK DISPONIVEL"|"BAIXO STOCK"|"SEM STOCK";
+    rating?: number;
+    inventoryStatus: "STOCK DISPONIVEL" | "BAIXO STOCK" | "SEM STOCK";
 };
 
 const PageProdutos = () => {
@@ -22,8 +23,8 @@ const PageProdutos = () => {
             category: "Tenis",
             price: "$350.90",
             status: true,
-            rating:3,
-            inventoryStatus:'BAIXO STOCK'
+            rating: 3,
+            inventoryStatus: "BAIXO STOCK",
         },
         {
             name: "sapato1",
@@ -31,8 +32,8 @@ const PageProdutos = () => {
             category: "Tenis",
             price: "$350.90",
             status: true,
-            rating:5,
-            inventoryStatus:'STOCK DISPONIVEL'
+            rating: 5,
+            inventoryStatus: "STOCK DISPONIVEL",
         },
         {
             name: "sapato2",
@@ -40,8 +41,8 @@ const PageProdutos = () => {
             category: "Tenis",
             price: "$350.90",
             status: true,
-            rating:1,
-            inventoryStatus:'SEM STOCK'
+            rating: 1,
+            inventoryStatus: "SEM STOCK",
         },
         {
             name: "sapato2",
@@ -49,8 +50,8 @@ const PageProdutos = () => {
             category: "Tenis",
             price: "$350.90",
             status: true,
-            rating:1,
-            inventoryStatus:'SEM STOCK'
+            rating: 1,
+            inventoryStatus: "SEM STOCK",
         },
         {
             name: "sapato2",
@@ -58,46 +59,71 @@ const PageProdutos = () => {
             category: "Tenis",
             price: "$350.90",
             status: true,
-            rating:1,
-            inventoryStatus:'SEM STOCK'
+            rating: 1,
+            inventoryStatus: "SEM STOCK",
         },
     ]);
 
     const imageBodyTemplate = (item: ProductsProps) => {
-        return <img src={item.image} alt={item.image} className="w-32 shadow-2 border-round" />;
-        setProducts
+        return (
+            <img
+                src={item.image}
+                alt={item.image}
+                className="w-32 shadow-2 border-round"
+            />
+        );
     };
     const ratingBodyTemplate = (item: ProductsProps) => {
         return <Rating value={item.rating} readOnly cancel={false} />;
     };
     const statusBodyTemplate = (item: ProductsProps) => {
-        return <Tag value={item.inventoryStatus} severity={getSeverity(item)}></Tag>;
+        return (
+            <Tag
+                value={item.inventoryStatus}
+                severity={getSeverity(item)}
+            ></Tag>
+        );
     };
 
-    const getSeverity = (product:ProductsProps) => {
+    const getSeverity = (product: ProductsProps) => {
         switch (product.inventoryStatus) {
-            case 'STOCK DISPONIVEL':
-                return 'success';
+            case "STOCK DISPONIVEL":
+                return "success";
 
-            case 'BAIXO STOCK':
-                return 'warning';
+            case "BAIXO STOCK":
+                return "warning";
 
-            case 'SEM STOCK':
-                return 'danger';
+            case "SEM STOCK":
+                return "danger";
 
             default:
                 return null;
         }
     };
+    setProducts;
 
     return (
-        <div className="">
-            <DataTable value={products} tableStyle={{ minWidth: "60rem" }}>
+        <div>
+            <DataTable
+                value={products}
+                tableStyle={{ minWidth: "50rem" }}
+                dataKey="id"
+                paginator
+                rows={10}
+                onValueChange={(e) => console.log(e)}
+                rowsPerPageOptions={[3, 5, 25]}
+                paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} products"
+            >
                 <Column field="name" header="Name"></Column>
                 <Column header="image" body={imageBodyTemplate}></Column>
                 <Column field="price" header="Price"></Column>
                 <Column field="category" header="Category"></Column>
-                <Column field="rating" header="Reviews" body={ratingBodyTemplate}></Column>
+                <Column
+                    field="rating"
+                    header="Reviews"
+                    body={ratingBodyTemplate}
+                ></Column>
                 <Column header="Status" body={statusBodyTemplate}></Column>
             </DataTable>
         </div>
