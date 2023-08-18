@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import Logo from "../assets/coffee-logo.png";
-import { AlignJustify } from "lucide-react";
+// import { AlignJustify } from "lucide-react";
 import { GlobalAuthContext } from "../context/AuthenticationContex";
 
 export const Navbar = () => {
@@ -18,7 +18,7 @@ export const Navbar = () => {
               type="button"
               className="z-50 inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
               <span className="sr-only">Open sidebar</span>
-              <AlignJustify />
+              {/* <AlignJustify /> */}
             </button>
             <a href="/" className="flex ml-2 md:mr-24">
               <img src={Logo} className="h-8 w-8 mr-3" alt="logo" />
