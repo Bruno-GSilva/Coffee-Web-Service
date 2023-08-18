@@ -11,10 +11,10 @@ import { useContext } from "react";
 import { GlobalAuthContext } from "../context/AuthenticationContex";
 
 export const Login = () => {
-    const { setToken, token ,  setUser } = useContext(GlobalAuthContext);
+    const { setToken, token } = useContext(GlobalAuthContext);
 
     const createUserFormSchema = z.object({
-        username: z.string().nonempty("seu username é obrigatorio"),
+
         email: z
             .string()
             .nonempty("o e-mail é obrigatorio")
@@ -36,7 +36,6 @@ export const Login = () => {
     });
 
     async function createUser(user: createUserFormData) {
-        setUser(user)
         setToken(true);
         console.log(user);
     }
@@ -59,24 +58,6 @@ export const Login = () => {
                     </h1>
                 </div>
                 <h1 className="text-2xl font-semibold">Login</h1>
-                <div>
-                    <div className="mb-2 block">
-                        <Label htmlFor="name" value="Username" />
-                    </div>
-                    <TextInput
-                        id="name"
-                        color={errors.email ? "failure" : "success"}
-                        placeholder="seu username"
-                        required
-                        type="text"
-                        helperText={
-                            <span className="font-medium">
-                                {errors.email?.message}
-                            </span>
-                        }
-                        {...register("username")}
-                    />
-                </div>
                 <div>
                     <div className="mb-2 block">
                         <Label htmlFor="email" value="Email" />

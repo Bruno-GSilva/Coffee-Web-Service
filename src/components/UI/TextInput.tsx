@@ -1,25 +1,29 @@
 import { Label, TextInput } from "flowbite-react";
-import { HTMLAttributes, ReactNode } from "react";
+import { InputHTMLAttributes, ReactNode } from "react";
+import { useFormContext } from "react-hook-form";
 
-interface InputTextProps extends HTMLAttributes<HTMLInputElement> {
+interface InputTextProps extends InputHTMLAttributes<HTMLInputElement> {
     errors: ReactNode;
     label: string;
     type: "email" | "password";
 }
 
-export const InputText = ({ errors, type, label, ...rest }: InputTextProps) => {
+export const InputText = (props: InputTextProps) => {
+    const { register } = useFormContext()
+
     return (
         <div>
             <div className="mb-2 block">
-                <Label htmlFor={type} value={label} />
+                <Label htmlFor={props.type} value={props.label} />
             </div>
             <TextInput
-                {...rest}
-                type={type}
+                {...props}
+                type={props.type}
                 required
                 placeholder="name@gmail.com"
-                color={errors ? "failure" : "success"}
-                helperText={<span className="font-medium">{errors}</span>}
+                color={props.errors ? "failure" : "success"}
+                helperText={<span className="font-medium">{props.errors}</span>}
+                {...register(props.type)}
             />
         </div>
     );
